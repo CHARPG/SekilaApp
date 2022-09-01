@@ -29,10 +29,10 @@ public class SakilaAppApplication {
 	Iterable<Actor> getAllActors(){
 		return actorRepository.findAll();
 	}
-//
-//	@GetMapping("/oneActor")
-//	public @ResponseBody
-//	Optional<Actor> getOneActor(int ID){
-//		return actorRepository.findById(ID);
-//	}
+
+	@GetMapping("/Actor/{id}")
+	@ResponseBody
+	public Optional<Actor> getActor(@PathVariable Integer id){
+		return actorRepository.findById(id);
+	}
 }
