@@ -16,17 +16,13 @@ public class SakilaAppApplication {
 	@Autowired
 	private ActorRepository actorRepository;
 	private CategoryRepository categoryRepository;
-	private FilmActorRepository filmActorRepository;
-	private FilmCategoryRepository filmCategoryRepository;
 	private FilmRepository filmRepository;
 	private FilmTextRepository filmTextRepository;
 	private LanguageRepository languageRepository;
 
-	public SakilaAppApplication(ActorRepository actorRepository, CategoryRepository categoryRepository, FilmActorRepository filmActorRepository, FilmCategoryRepository filmCategoryRepository, FilmRepository filmRepository, FilmTextRepository filmTextRepository, LanguageRepository languageRepository){
+	public SakilaAppApplication(ActorRepository actorRepository, CategoryRepository categoryRepository, FilmRepository filmRepository, FilmTextRepository filmTextRepository, LanguageRepository languageRepository){
 		this.actorRepository = actorRepository;
 		this.categoryRepository = categoryRepository;
-		this.filmActorRepository = filmActorRepository;
-		this.filmCategoryRepository = filmCategoryRepository;
 		this.filmRepository = filmRepository;
 		this.filmTextRepository = filmTextRepository;
 		this.languageRepository = languageRepository;
@@ -46,12 +42,6 @@ public class SakilaAppApplication {
 	public @ResponseBody
 	Iterable<Category> getAllCategories(){
 		return categoryRepository.findAll();
-	}
-
-	@GetMapping("/allFilmActors")
-	public @ResponseBody
-	Iterable<FilmActor> getAllFilmActors(){
-		return filmActorRepository.findAll();
 	}
 
 	//add
