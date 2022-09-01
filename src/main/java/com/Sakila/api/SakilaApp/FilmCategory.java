@@ -2,7 +2,6 @@ package com.Sakila.api.SakilaApp;
 
 import javax.persistence.*;
 
-@Entity
 @Table(name = "film_category") //reference database table
 public class FilmCategory {
     //Attributes

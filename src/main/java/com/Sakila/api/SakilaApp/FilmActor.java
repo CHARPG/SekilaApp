@@ -2,11 +2,11 @@ package com.Sakila.api.SakilaApp;
 
 import javax.persistence.*;
 
-@Entity
 @Table(name = "film_actor") //reference database table
 public class FilmActor {
     //Attributes
-    @Column(name = "actor_id")
+
+    @Column (name = "actor_id")
     int actorID;
 
     @Column(name = "film_id")
