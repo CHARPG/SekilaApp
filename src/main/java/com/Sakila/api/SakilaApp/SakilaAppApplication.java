@@ -58,6 +58,8 @@ public class SakilaAppApplication {
 	@PostMapping("/addActor")
 	@ResponseBody
 	public String addActor(@RequestBody Actor actor){
+//		actor.setFirstName(actor.firstName);
+//		actor.setLastName(actor.lastName);
 		actorRepository.save(actor);
 		return ("Actor added");
 	}
@@ -68,6 +70,17 @@ public class SakilaAppApplication {
 	public String deleteActor(@PathVariable Integer id){
 		actorRepository.deleteById(id);
 		return ("Actor " + id + " deleted");
+	}
+
+	//update
+	@PutMapping("/editActor/{id}")
+	@ResponseBody
+	public String editActor(@PathVariable Integer id, @RequestBody Actor newActor){
+		final Actor actor = actorRepository.findById(id).get();
+		actor.setFirstName(newActor.firstName);
+		actor.setLastName(newActor.lastName);
+		actorRepository.save(actor);
+		return ("Actor " + id + " updated");
 	}
 
 	@GetMapping("/Actor/{id}")
