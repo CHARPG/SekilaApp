@@ -42,6 +42,12 @@ public class SakilaAppApplication {
 		return actorRepository.findAll();
 	}
 
+	@GetMapping("/allCategories")
+	public @ResponseBody
+	Iterable<Category> getAllCategories(){
+		return categoryRepository.findAll();
+	}
+
 	@GetMapping("/Actor/{id}")
 	@ResponseBody
 	public Optional<Actor> getActor(@PathVariable Integer id){
