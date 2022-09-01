@@ -48,6 +48,28 @@ public class SakilaAppApplication {
 		return categoryRepository.findAll();
 	}
 
+	@GetMapping("/allFilmActors")
+	public @ResponseBody
+	Iterable<FilmActor> getAllFilmActors(){
+		return filmActorRepository.findAll();
+	}
+
+	//add
+	@PostMapping("/addActor")
+	@ResponseBody
+	public String addActor(@RequestBody Actor actor){
+		actorRepository.save(actor);
+		return ("Actor added");
+	}
+
+	//delete
+	@DeleteMapping("/deleteActor/{id}")
+	@ResponseBody
+	public String deleteActor(@PathVariable Integer id){
+		actorRepository.deleteById(id);
+		return ("Actor " + id + " deleted");
+	}
+
 	@GetMapping("/Actor/{id}")
 	@ResponseBody
 	public Optional<Actor> getActor(@PathVariable Integer id){

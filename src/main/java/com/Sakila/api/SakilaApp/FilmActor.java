@@ -1,11 +1,15 @@
+//this one doesnt have the correct foreign key
+
 package com.Sakila.api.SakilaApp;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "film_actor") //reference database table
 public class FilmActor {
     //Attributes
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "actor_id")
     int actorID;
 
