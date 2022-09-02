@@ -1,15 +1,26 @@
 package com.Sakila.api.SakilaApp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "actor") //reference database table called actor
 public class Actor {
     //Attributes
+
     @Id
     @Column(name = "actor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int actorID;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "film_actor",
+//            joinColumns = @JoinColumn(name = "actor_id"),
+//            inverseJoinColumns = @JoinColumn(name = "film_id")
+//    )
+//    List<Film> films = new ArrayList<>();
 
     @Column(name = "first_name")
     String firstName;
@@ -28,7 +39,6 @@ public class Actor {
     }
 
     //Methods
-
     public int getActorID() {
         return actorID;
     }

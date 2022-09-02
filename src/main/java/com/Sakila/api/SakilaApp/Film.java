@@ -1,6 +1,8 @@
 package com.Sakila.api.SakilaApp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "film") //reference database table
@@ -10,6 +12,14 @@ public class Film {
     @Column(name = "film_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int filmID;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "film_actor",
+//            joinColumns = @JoinColumn(name = "film_id"),
+//            inverseJoinColumns = @JoinColumn(name = "actor_id")
+//    )
+//    List<Actor> actors = new ArrayList<>();
 
     @Column(name = "title")
     String filmTitle;
@@ -22,9 +32,6 @@ public class Film {
 
     @Column(name = "language_id")
     int filmLanguageId;
-
-    @Column(name = "original_language_id")
-    int filmOriginalLanguageId;
 
     @Column(name = "rental_duration")
     int filmRentalDuration;
@@ -45,12 +52,11 @@ public class Film {
     String filmSpecialFeatures;
 
     //Constructors
-    public Film(String title, String description, int release_year, int language_id, int original_language_id, int rental_duration, float rental_rate, int length, float replacement_cost, String rating, String special_features){
+    public Film(String title, String description, int release_year, int language_id, int rental_duration, float rental_rate, int length, float replacement_cost, String rating, String special_features){
         this.filmTitle = title;
         this.filmDescription = description;
         this.filmReleaseYear = release_year;
         this.filmLanguageId = language_id;
-        this.filmOriginalLanguageId = original_language_id;
         this.filmRentalDuration = rental_duration;
         this.filmRentalRate = rental_rate;
         this.filmLength = length;
@@ -102,14 +108,6 @@ public class Film {
 
     public void setFilmLanguageId(int filmLanguageId) {
         this.filmLanguageId = filmLanguageId;
-    }
-
-    public int getFilmOriginalLanguageId() {
-        return filmOriginalLanguageId;
-    }
-
-    public void setFilmOriginalLanguageId(int filmOriginalLanguageId) {
-        this.filmOriginalLanguageId = filmOriginalLanguageId;
     }
 
     public int getFilmRentalDuration() {

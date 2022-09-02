@@ -17,14 +17,12 @@ public class SakilaAppApplication {
 	private ActorRepository actorRepository;
 	private CategoryRepository categoryRepository;
 	private FilmRepository filmRepository;
-	private FilmTextRepository filmTextRepository;
 	private LanguageRepository languageRepository;
 
-	public SakilaAppApplication(ActorRepository actorRepository, CategoryRepository categoryRepository, FilmRepository filmRepository, FilmTextRepository filmTextRepository, LanguageRepository languageRepository){
+	public SakilaAppApplication(ActorRepository actorRepository, CategoryRepository categoryRepository, FilmRepository filmRepository, LanguageRepository languageRepository){
 		this.actorRepository = actorRepository;
 		this.categoryRepository = categoryRepository;
 		this.filmRepository = filmRepository;
-		this.filmTextRepository = filmTextRepository;
 		this.languageRepository = languageRepository;
 	}
 
@@ -32,24 +30,70 @@ public class SakilaAppApplication {
 		SpringApplication.run(SakilaAppApplication.class, args);
 	}
 
+	//------------------------------------Actors
 	@GetMapping("/allActors")
 	public @ResponseBody
 	Iterable<Actor> getAllActors(){
 		return actorRepository.findAll();
 	}
 
+	@GetMapping("/Actor/{id}")
+	@ResponseBody
+	public Optional<Actor> getActor(@PathVariable Integer id){
+		return actorRepository.findById(id);
+	}
+
+	@GetMapping("/ActorName/{id}")
+	@ResponseBody
+	public String getActorVar(@PathVariable Integer id){
+		int nameLength = actorRepository.findById(id).get().firstName.length() + actorRepository.findById(id).get().lastName.length();
+		return actorRepository.findById(id).get().firstName + " " + actorRepository.findById(id).get().lastName + " " + nameLength;
+	}
+
+	//------------------------------------Categories
 	@GetMapping("/allCategories")
 	public @ResponseBody
 	Iterable<Category> getAllCategories(){
 		return categoryRepository.findAll();
 	}
 
+	@GetMapping("/Category/{id}")
+	@ResponseBody
+	public Optional<Category> getCategory(@PathVariable Integer id){
+		return categoryRepository.findById(id);
+	}
+
+
+
+	@GetMapping("/filmCategory/{id}")
+	@ResponseBody
+	public Iterable<Object> getFilmCategory(@PathVariable Integer id){
+		return filmRepository.getFilmCategory(id);
+	}
+	@GetMapping("/filmActor/{id}")
+	@ResponseBody
+	public Iterable<Object> getFilmActor(@PathVariable Integer id){
+		return filmRepository.getFilmActor(id);
+	}
+
+
+
+	@GetMapping("/allFilms")
+	public @ResponseBody
+	Iterable<Film> getAllFilms(){
+		return filmRepository.findAll();
+	}
+
+	@GetMapping("/Film/{id}")
+	@ResponseBody
+	public Optional<Film> getFilm(@PathVariable Integer id){
+		return filmRepository.findById(id);
+	}
+
 	//add
 	@PostMapping("/addActor")
 	@ResponseBody
 	public String addActor(@RequestBody Actor actor){
-//		actor.setFirstName(actor.firstName);
-//		actor.setLastName(actor.lastName);
 		actorRepository.save(actor);
 		return ("Actor added");
 	}
@@ -71,11 +115,5 @@ public class SakilaAppApplication {
 		actor.setLastName(newActor.lastName);
 		actorRepository.save(actor);
 		return ("Actor " + id + " updated");
-	}
-
-	@GetMapping("/Actor/{id}")
-	@ResponseBody
-	public Optional<Actor> getActor(@PathVariable Integer id){
-		return actorRepository.findById(id);
 	}
 }
