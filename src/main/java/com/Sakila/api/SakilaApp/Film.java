@@ -13,14 +13,6 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int filmID;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "film_actor",
-//            joinColumns = @JoinColumn(name = "film_id"),
-//            inverseJoinColumns = @JoinColumn(name = "actor_id")
-//    )
-//    List<Actor> actors = new ArrayList<>();
-
     @Column(name = "title")
     String filmTitle;
 

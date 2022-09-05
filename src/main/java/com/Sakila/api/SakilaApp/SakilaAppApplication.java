@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -13,6 +14,8 @@ import java.util.Optional;
 @CrossOrigin
 public class SakilaAppApplication {
 
+	private FilmStats filmStats = new FilmStats();
+	private static SakilaAppApplication instance;
 	@Autowired
 	private ActorRepository actorRepository;
 	private CategoryRepository categoryRepository;
@@ -24,71 +27,75 @@ public class SakilaAppApplication {
 		this.categoryRepository = categoryRepository;
 		this.filmRepository = filmRepository;
 		this.languageRepository = languageRepository;
+
+		if(instance == null){
+			instance = this;
+		}
+	}
+
+	public static SakilaAppApplication getInstance(){
+		return instance;
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SakilaAppApplication.class, args);
 	}
-
-	//------------------------------------Actors
-	@GetMapping("/allActors")
-	public @ResponseBody
-	Iterable<Actor> getAllActors(){
-		return actorRepository.findAll();
-	}
-
-	@GetMapping("/Actor/{id}")
+	@GetMapping("/generateFilm")
 	@ResponseBody
-	public Optional<Actor> getActor(@PathVariable Integer id){
-		return actorRepository.findById(id);
+	public String generateFilmStats(){
+		FilmStats firstFilm = new FilmStats();
+		FilmStats secondFilm = new FilmStats();
+		firstFilm.generateStats();
+		secondFilm.generateStats();
+		return (firstFilm.toString() + "\n" + secondFilm.toString());
 	}
-
-	@GetMapping("/ActorName/{id}")
-	@ResponseBody
-	public String getActorVar(@PathVariable Integer id){
-		int nameLength = actorRepository.findById(id).get().firstName.length() + actorRepository.findById(id).get().lastName.length();
-		return actorRepository.findById(id).get().firstName + " " + actorRepository.findById(id).get().lastName + " " + nameLength;
-	}
-
-	//------------------------------------Categories
-	@GetMapping("/allCategories")
-	public @ResponseBody
-	Iterable<Category> getAllCategories(){
-		return categoryRepository.findAll();
-	}
-
-	@GetMapping("/Category/{id}")
-	@ResponseBody
-	public Optional<Category> getCategory(@PathVariable Integer id){
-		return categoryRepository.findById(id);
-	}
-
-
 
 	@GetMapping("/filmCategory/{id}")
 	@ResponseBody
-	public Iterable<Object> getFilmCategory(@PathVariable Integer id){
+	public Optional<String> getFilmCategory(@PathVariable Integer id){
 		return filmRepository.getFilmCategory(id);
 	}
 	@GetMapping("/filmActor/{id}")
 	@ResponseBody
-	public Iterable<Object> getFilmActor(@PathVariable Integer id){
+	public Optional<String> getFilmActor(@PathVariable Integer id){
 		return filmRepository.getFilmActor(id);
 	}
-
-
-
-	@GetMapping("/allFilms")
-	public @ResponseBody
-	Iterable<Film> getAllFilms(){
-		return filmRepository.findAll();
-	}
-
-	@GetMapping("/Film/{id}")
+	@GetMapping("/filmLangauge/{id}")
 	@ResponseBody
-	public Optional<Film> getFilm(@PathVariable Integer id){
-		return filmRepository.findById(id);
+	public Optional<String> getFilmLanguage(@PathVariable Integer id){
+		return filmRepository.getFilmLangauge(id);
 	}
+
+	@GetMapping("/filmLength/{id}")
+	@ResponseBody
+	public Optional<Integer> getFilmLength(@PathVariable Integer id){
+		return filmRepository.getFilmLength(id);
+	}
+
+	@GetMapping("/filmReleaseYear/{id}")
+	@ResponseBody
+	public Optional<Date> getFilmReleaseYear(@PathVariable Integer id){
+		return filmRepository.getFilmReleaseYear(id);
+	}
+
+	@GetMapping("/filmRating/{id}")
+	@ResponseBody
+	public Optional<String> getFilmRating(@PathVariable Integer id){
+		return filmRepository.getFilmRating(id);
+	}
+
+	@GetMapping("/filmTitle/{id}")
+	@ResponseBody
+	public Optional<String> getFilmTitle(@PathVariable Integer id){
+		return filmRepository.getFilmTitle(id);
+	}
+
+	@GetMapping("/filmDescription/{id}")
+	@ResponseBody
+	public Optional<String> getFilmDescription(@PathVariable Integer id){
+		return filmRepository.getFilmDescription(id);
+	}
+
 
 	//add
 	@PostMapping("/addActor")
