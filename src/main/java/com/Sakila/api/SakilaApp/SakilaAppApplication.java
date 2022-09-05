@@ -1,5 +1,6 @@
 package com.Sakila.api.SakilaApp;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -44,10 +45,10 @@ public class SakilaAppApplication {
 	@ResponseBody
 	public String generateFilmStats(){
 		FilmStats firstFilm = new FilmStats();
-		FilmStats secondFilm = new FilmStats();
+		//FilmStats secondFilm = new FilmStats();
 		firstFilm.generateStats();
-		secondFilm.generateStats();
-		return (firstFilm.toString() + "\n" + secondFilm.toString());
+		//secondFilm.generateStats();
+		return (firstFilm.toString());
 	}
 
 	@GetMapping("/filmCategory/{id}")
@@ -96,6 +97,13 @@ public class SakilaAppApplication {
 		return filmRepository.getFilmDescription(id);
 	}
 
+
+
+	@GetMapping("/getFilm/{id}")
+	@ResponseBody
+	public Optional<Film> getFilm(@PathVariable Integer id){
+		return filmRepository.findById(id);
+	}
 
 	//add
 	@PostMapping("/addActor")

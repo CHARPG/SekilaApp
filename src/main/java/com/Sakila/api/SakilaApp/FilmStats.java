@@ -1,6 +1,6 @@
 package com.Sakila.api.SakilaApp;
+import org.json.*;
 
-import java.util.Date;
 import java.util.Random;
 
 public class FilmStats{
@@ -10,6 +10,7 @@ public class FilmStats{
     private String name, language, description;
     private int id, health, attack, defense, agility, vitality;
 
+    private Film film;
     public FilmStats(){
         sakilaAppApplication = SakilaAppApplication.getInstance();
     }
@@ -17,6 +18,7 @@ public class FilmStats{
     {
         Random rand = (seed == null ? new Random(): new Random(seed));
         id = (Integer)rand.nextInt(1, 1000);
+        film = sakilaAppApplication.getFilm(id).get();
         setVitality();
         setAgility();
         setDefense();
@@ -49,27 +51,27 @@ public class FilmStats{
     private void setDefense()
     {
         int length;
-        length = sakilaAppApplication.getFilmLength(id).get();
+        length = film.getFilmLength();
         defense = length;
     }
 
     private void setAgility()
     {
-        Date yearOfRelease;
-        yearOfRelease = sakilaAppApplication.getFilmReleaseYear(id).get();
-        agility = (yearOfRelease.getYear() + 1900); //get year returns the year -1900 so I add 1900 to get the value
+        int yearOfRelease;
+        yearOfRelease = film.getFilmReleaseYear();
+        agility = yearOfRelease; //get year returns the year -1900 so I add 1900 to get the value
     }
 
     private void setVitality()
     {
         String rating;
-        rating = sakilaAppApplication.getFilmRating(id).get();
+        rating = film.getFilmRating();
         vitality = rating.length();
     }
 
     private void setName()
     {
-        name = sakilaAppApplication.getFilmTitle(id).get();
+        name = film.getFilmTitle();
     }
 
     private void setLanguage()
@@ -79,7 +81,7 @@ public class FilmStats{
 
     private void setDescription()
     {
-        description = sakilaAppApplication.getFilmDescription(id).get();
+        description = film.getFilmDescription();
     }
 
     public int getHealth() {
