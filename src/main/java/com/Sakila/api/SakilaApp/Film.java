@@ -1,17 +1,40 @@
 package com.Sakila.api.SakilaApp;
 
+import org.hibernate.mapping.Join;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "film") //reference database table
+
 public class Film {
+
+
+
     //Attributes
     @Id
     @Column(name = "film_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int filmID;
+
+    @ManyToMany
+    @JoinTable(
+            name = "film_actor",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
+    )
+    Set<Actor> actors;
+
+    @ManyToMany
+    @JoinTable(
+            name = "film_category",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    Set<Category> category;
 
     @Column(name = "title")
     String filmTitle;
@@ -22,9 +45,12 @@ public class Film {
     @Column(name = "release_year")
     int filmReleaseYear;
 
-    @Column(name = "language_id")
-    int filmLanguageId;
+    @ManyToOne
+    @JoinColumn(name="language_id", nullable=false, insertable = false, updatable = false)
+    private Language language;
 
+    @Column(name="language_id", nullable=false)
+    private Integer language_id;
     @Column(name = "rental_duration")
     int filmRentalDuration;
 
@@ -44,18 +70,18 @@ public class Film {
     String filmSpecialFeatures;
 
     //Constructors
-    public Film(String title, String description, int release_year, int language_id, int rental_duration, float rental_rate, int length, float replacement_cost, String rating, String special_features){
-        this.filmTitle = title;
-        this.filmDescription = description;
-        this.filmReleaseYear = release_year;
-        this.filmLanguageId = language_id;
-        this.filmRentalDuration = rental_duration;
-        this.filmRentalRate = rental_rate;
-        this.filmLength = length;
-        this.filmReplacementCost = replacement_cost;
-        this.filmRating = rating;
-        this.filmSpecialFeatures = special_features;
-    }
+//    public Film(String title, String description, int release_year, int rental_duration, float rental_rate, int length, float replacement_cost, String rating, String special_features){
+//        this.filmTitle = title;
+//        this.filmDescription = description;
+//        this.filmReleaseYear = release_year;
+//        this.filmRentalDuration = rental_duration;
+//        this.filmRentalRate = rental_rate;
+//        this.filmLength = length;
+//        this.filmReplacementCost = replacement_cost;
+//        this.filmRating = rating;
+//        this.filmSpecialFeatures = special_features;
+//    }
+
     public Film()
     {
 
@@ -92,14 +118,6 @@ public class Film {
 
     public void setFilmReleaseYear(int filmReleaseYear) {
         this.filmReleaseYear = filmReleaseYear;
-    }
-
-    public int getFilmLanguageId() {
-        return filmLanguageId;
-    }
-
-    public void setFilmLanguageId(int filmLanguageId) {
-        this.filmLanguageId = filmLanguageId;
     }
 
     public int getFilmRentalDuration() {
@@ -148,5 +166,22 @@ public class Film {
 
     public void setFilmSpecialFeatures(String filmSpecialFeatures) {
         this.filmSpecialFeatures = filmSpecialFeatures;
+    }
+
+    public Set<Category> getCategory() {
+        return category;
+    }
+    public Set<Actor> getActors() {
+        return actors;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+    public void setLanguage_id(Integer languageId) {
+        this.language_id = languageId;
+    }
+    public Integer getLanguage_id() {
+        return language_id;
     }
 }

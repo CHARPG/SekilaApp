@@ -1,16 +1,17 @@
 package com.Sakila.api.SakilaApp;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "language") //reference database table
 public class Language {
+
     //Attributes
     @Id
     @Column(name = "language_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int languageID;
-
     @Column(name = "name")
     String languageName;
 

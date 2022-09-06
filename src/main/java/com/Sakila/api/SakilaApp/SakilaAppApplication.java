@@ -99,10 +99,34 @@ public class SakilaAppApplication {
 
 
 
+
+
+	@GetMapping("/getFilmData/{id}")
+	@ResponseBody
+	public Optional<String> getFilmData(@PathVariable Integer id){
+		return filmRepository.getFilmData(id);
+	}
+
+
+
+
+
+
 	@GetMapping("/getFilm/{id}")
 	@ResponseBody
 	public Optional<Film> getFilm(@PathVariable Integer id){
 		return filmRepository.findById(id);
+	}
+
+
+
+
+
+
+	@GetMapping("/getAllFilms")
+	@ResponseBody
+	public Iterable<Film> getAllFilms(){
+		return filmRepository.findAll();
 	}
 
 	//add
