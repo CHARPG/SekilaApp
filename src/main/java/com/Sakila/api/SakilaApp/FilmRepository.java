@@ -33,6 +33,12 @@ public interface FilmRepository extends CrudRepository<Film, Integer> {
     Optional<String> getFilmDescription(Integer id);
 
 
+
+    @Query(nativeQuery = true, value = "SELECT * FROM sakila.film WHERE title LIKE %:id%")
+    Iterable<Film> getFilmByTitle(String id);
+
+
+
     @Query(nativeQuery = true, value = "SELECT category.name, actor.first_name, actor.last_name, description, release_year, language_id, length, rating FROM film INNER JOIN film_category ON film.film_id = film_category.film_id INNER JOIN category ON film_category.category_id = category.category_id INNER JOIN film_actor ON film.film_id = film_actor.film_id INNER JOIN actor ON film_actor.actor_id = actor.actor_id WHERE film.film_id = :id limit 1")
     Optional<String> getFilmData(Integer id);
 }

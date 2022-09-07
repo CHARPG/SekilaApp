@@ -97,6 +97,12 @@ public class SakilaAppApplication {
 		return filmRepository.getFilmDescription(id);
 	}
 
+	@GetMapping("/filmA/{id}")
+	@ResponseBody
+	public Iterable<Film> getFilmA(@PathVariable String id){
+		return filmRepository.getFilmByTitle(id);
+	}
+
 
 
 
