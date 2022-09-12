@@ -69,6 +69,12 @@ public class Film {
     @Column(name = "special_features")
     String filmSpecialFeatures;
 
+    @Column(name = "win")
+    int win;
+
+    @Column(name = "loss")
+    int loss;
+
     //Constructors
 //    public Film(String title, String description, int release_year, int rental_duration, float rental_rate, int length, float replacement_cost, String rating, String special_features){
 //        this.filmTitle = title;
@@ -183,5 +189,21 @@ public class Film {
     }
     public Integer getLanguage_id() {
         return language_id;
+    }
+
+    public int getWin() {
+        return win;
+    }
+
+    public void setWin(int win) {
+        this.win = win;
+    }
+
+    public int getLoss() {
+        return loss;
+    }
+
+    public void setLoss(int loss) {
+        this.loss = loss;
     }
 }

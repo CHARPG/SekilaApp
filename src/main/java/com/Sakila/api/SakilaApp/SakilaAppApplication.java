@@ -41,6 +41,31 @@ public class SakilaAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SakilaAppApplication.class, args);
 			}
+
+	@GetMapping("/getFilm/{id}")
+	@ResponseBody
+	public Optional<Film> getFilm(@PathVariable Integer id){
+		return filmRepository.findById(id);
+	}
+
+	@PutMapping("/editWins/{id}")
+	@ResponseBody
+	public String addWin(@PathVariable Integer id){
+		final Film film = filmRepository.findById(id).get();
+		film.setWin(film.getWin() + 1);
+		filmRepository.save(film);
+		return ("Film " + id + " updated");
+	}
+
+	@PutMapping("/editLosses/{id}")
+	@ResponseBody
+	public String addLoss(@PathVariable Integer id){
+		final Film film = filmRepository.findById(id).get();
+		film.setLoss(film.getLoss() + 1);
+		filmRepository.save(film);
+		return ("Film " + id + " updated");
+	}
+
 //	@GetMapping("/generateFilm")
 //	@ResponseBody
 //	public String generateFilmStats(){
@@ -112,23 +137,6 @@ public class SakilaAppApplication {
 //	public Optional<String> getFilmData(@PathVariable Integer id){
 //		return filmRepository.getFilmData(id);
 //	}
-//
-//
-//
-//
-//
-
-	@GetMapping("/getFilm/{id}")
-	@ResponseBody
-	public Optional<Film> getFilm(@PathVariable Integer id){
-		return filmRepository.findById(id);
-	}
-//
-//
-//
-//
-//
-//
 //	@GetMapping("/getAllFilms")
 //	@ResponseBody
 //	public Iterable<Film> getAllFilms(){
