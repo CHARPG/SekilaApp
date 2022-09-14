@@ -1,8 +1,6 @@
 package com.Sakila.api.SakilaApp;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "actor") //reference database table called actor

@@ -1,7 +1,6 @@
 package com.Sakila.api.SakilaApp;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "language") //reference database table
