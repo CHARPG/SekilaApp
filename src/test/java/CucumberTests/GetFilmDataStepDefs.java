@@ -1,13 +1,10 @@
 package CucumberTests;
 
 import com.Sakila.api.SakilaApp.*;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 
 import java.util.Optional;
@@ -18,21 +15,12 @@ import static org.mockito.Mockito.when;
 public class GetFilmDataStepDefs {
 
     private SakilaAppApplication sakilaAppApplication;
-
-    @Mock
-    private ActorRepository actorRepository;
-    @Mock
-    private CategoryRepository categoryRepository;
     @Mock
     private FilmRepository filmRepository;
-    @Mock
-    private LanguageRepository languageRepository;
+
     public GetFilmDataStepDefs(){
-        actorRepository = mock(ActorRepository.class);
-        categoryRepository = mock(CategoryRepository.class);
         filmRepository = mock(FilmRepository.class);
-        languageRepository = mock(LanguageRepository.class);
-        sakilaAppApplication = new SakilaAppApplication(actorRepository, categoryRepository, filmRepository, languageRepository);
+        sakilaAppApplication = new SakilaAppApplication(filmRepository);
     }
 
     Film testFilm;

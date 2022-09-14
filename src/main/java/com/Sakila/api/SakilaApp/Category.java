@@ -20,7 +20,7 @@ public class Category {
     }
     public Category()
     {
-
+        //empty constructor
     }
 
     //Methods

@@ -1,10 +1,6 @@
 package com.Sakila.api.SakilaApp;
 
-import org.hibernate.mapping.Join;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,8 +8,6 @@ import java.util.Set;
 @Table(name = "film") //reference database table
 
 public class Film {
-
-
 
     //Attributes
     @Id
@@ -76,22 +70,9 @@ public class Film {
     @Column(name = "loss")
     int loss;
 
-    //Constructors
-//    public Film(String title, String description, int release_year, int rental_duration, float rental_rate, int length, float replacement_cost, String rating, String special_features){
-//        this.filmTitle = title;
-//        this.filmDescription = description;
-//        this.filmReleaseYear = release_year;
-//        this.filmRentalDuration = rental_duration;
-//        this.filmRentalRate = rental_rate;
-//        this.filmLength = length;
-//        this.filmReplacementCost = replacement_cost;
-//        this.filmRating = rating;
-//        this.filmSpecialFeatures = special_features;
-//    }
-
     public Film()
     {
-
+        //empty constructor
     }
 
     //Methods

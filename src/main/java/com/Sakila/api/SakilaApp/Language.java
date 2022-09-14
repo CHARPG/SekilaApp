@@ -21,7 +21,7 @@ public class Language {
     }
     public Language()
     {
-
+        //empty constructor
     }
 
     //Methods
