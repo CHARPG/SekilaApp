@@ -5,6 +5,7 @@ import org.hibernate.mapping.Join;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -205,5 +206,18 @@ public class Film {
 
     public void setLoss(int loss) {
         this.loss = loss;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Film film = (Film) o;
+        return filmID == film.filmID && filmReleaseYear == film.filmReleaseYear && filmRentalDuration == film.filmRentalDuration && Float.compare(film.filmRentalRate, filmRentalRate) == 0 && filmLength == film.filmLength && Float.compare(film.filmReplacementCost, filmReplacementCost) == 0 && win == film.win && loss == film.loss && Objects.equals(actors, film.actors) && Objects.equals(category, film.category) && Objects.equals(filmTitle, film.filmTitle) && Objects.equals(filmDescription, film.filmDescription) && Objects.equals(language, film.language) && Objects.equals(language_id, film.language_id) && Objects.equals(filmRating, film.filmRating) && Objects.equals(filmSpecialFeatures, film.filmSpecialFeatures);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(filmID, actors, category, filmTitle, filmDescription, filmReleaseYear, language, language_id, filmRentalDuration, filmRentalRate, filmLength, filmReplacementCost, filmRating, filmSpecialFeatures, win, loss);
     }
 }
