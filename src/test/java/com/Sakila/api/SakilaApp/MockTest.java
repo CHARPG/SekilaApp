@@ -130,6 +130,27 @@ public class MockTest {
         testFilm.setFilmSpecialFeatures("na");
         Assertions.assertEquals("na", testFilm.getFilmSpecialFeatures(), "this is not it");
     }
+    @Test
+    void test_Film_Win()
+    {
+        Film testFilm = new Film();
+        testFilm.setWin(1);
+        Assertions.assertEquals(1, testFilm.getWin(), "this is not it");
+    }
+    @Test
+    void test_Film_Loss()
+    {
+        Film testFilm = new Film();
+        testFilm.setLoss(1);
+        Assertions.assertEquals(1, testFilm.getLoss(), "this is not it");
+    }
+    @Test
+    void test_Film_LanguageID()
+    {
+        Film testFilm = new Film();
+        testFilm.setLanguage_id(1);
+        Assertions.assertEquals(1, testFilm.getLanguage_id(), "this is not it");
+    }
 //    @Test
 //    void test_Film_Category()
 //    {
