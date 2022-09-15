@@ -1,4 +1,4 @@
-package com.Sakila.api.SakilaApp;
+package com.Sakila.api.sakilaapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -44,7 +44,6 @@ public class SakilaAppApplication {
 	@PutMapping("/editWins/{id}")
 	@ResponseBody
 	public String addWin(@PathVariable Integer id){
-//		final Film film = filmRepository.findById(id).get();
 		Optional<Film> optional = filmRepository.findById(id);
 		if(optional.isEmpty()){
 			throw new NoSuchElementException();

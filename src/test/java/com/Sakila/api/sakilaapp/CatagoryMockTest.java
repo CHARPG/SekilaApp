@@ -1,4 +1,4 @@
-package com.Sakila.api.SakilaApp;
+package com.Sakila.api.sakilaapp;
 
 
 import org.junit.jupiter.api.Assertions;
@@ -9,7 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class CatagoryMockTest {
+class CatagoryMockTest {
 
     private CategoryRepository categoryRepository;
 

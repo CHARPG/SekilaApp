@@ -1,8 +1,8 @@
 package CucumberTests;
 
-import com.Sakila.api.SakilaApp.Film;
-import com.Sakila.api.SakilaApp.FilmRepository;
-import com.Sakila.api.SakilaApp.SakilaAppApplication;
+import com.Sakila.api.sakilaapp.Film;
+import com.Sakila.api.sakilaapp.FilmRepository;
+import com.Sakila.api.sakilaapp.SakilaAppApplication;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

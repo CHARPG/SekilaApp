@@ -1,4 +1,4 @@
-package com.Sakila.api.SakilaApp;
+package com.Sakila.api.sakilaapp;
 
 
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +13,7 @@ import java.util.Set;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class MockTest {
+class MockTest {
 
     private SakilaAppApplication sakilaAppApplication;
 
