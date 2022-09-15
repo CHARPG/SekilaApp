@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -43,7 +44,12 @@ public class SakilaAppApplication {
 	@PutMapping("/editWins/{id}")
 	@ResponseBody
 	public String addWin(@PathVariable Integer id){
-		final Film film = filmRepository.findById(id).get();
+//		final Film film = filmRepository.findById(id).get();
+		Optional<Film> optional = filmRepository.findById(id);
+		if(optional.isEmpty()){
+			throw new NoSuchElementException();
+		}
+		Film film = optional.get();
 		film.setWin(film.getWin() + 1);
 		filmRepository.save(film);
 		return ("Film " + id + " updated");
@@ -53,7 +59,11 @@ public class SakilaAppApplication {
 	@PutMapping("/editLosses/{id}")
 	@ResponseBody
 	public String addLoss(@PathVariable Integer id){
-		final Film film = filmRepository.findById(id).get();
+		Optional<Film> optional = filmRepository.findById(id);
+		if(optional.isEmpty()){
+			throw new NoSuchElementException();
+		}
+		Film film = optional.get();
 		film.setLoss(film.getLoss() + 1);
 		filmRepository.save(film);
 		return ("Film " + id + " updated");
