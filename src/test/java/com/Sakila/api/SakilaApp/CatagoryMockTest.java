@@ -28,8 +28,7 @@ public class CatagoryMockTest {
     @Test
     void test_Category_Name()
     {
-        Category testCategory = new Category();
-        testCategory.setCategoryName("testCategory");
+        Category testCategory = new Category("testCategory");
         Assertions.assertEquals("testCategory", testCategory.getCategoryName(), "this is not it");
     }
 }

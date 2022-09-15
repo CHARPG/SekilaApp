@@ -34,8 +34,7 @@ public class ActorMockTest {
     @Test
     void test_Actor_Last_Name()
     {
-        Actor testActor = new Actor();
-        testActor.setLastName("TestLastName");
+        Actor testActor = new Actor("TestFirstName", "TestLastName");
         Assertions.assertEquals("TestLastName", testActor.getLastName(), "this is not it");
     }
 }
