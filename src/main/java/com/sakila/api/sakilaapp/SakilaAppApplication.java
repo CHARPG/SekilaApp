@@ -1,4 +1,4 @@
-package com.Sakila.api.sakilaapp;
+package com.sakila.api.sakilaapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
