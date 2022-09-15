@@ -28,7 +28,8 @@ public class LangaugeMockTest {
     @Test
     void test_Language_Name()
     {
-        Language testLanguage = new Language("testLanguage");
+        Language testLanguage = new Language("testLanguageInitial");
+        testLanguage.setLanguageName("testLanguage");
         Assertions.assertEquals("testLanguage", testLanguage.getLanguageName(), "this is not it");
     }
 }
