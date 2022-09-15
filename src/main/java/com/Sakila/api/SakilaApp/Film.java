@@ -13,7 +13,7 @@ public class Film {
     @Id
     @Column(name = "film_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int filmID;
+    private int filmID;
 
     @ManyToMany
     @JoinTable(
@@ -21,7 +21,7 @@ public class Film {
             joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
-    Set<Actor> actors;
+    private Set<Actor> actors;
 
     @ManyToMany
     @JoinTable(
@@ -29,16 +29,16 @@ public class Film {
             joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    Set<Category> category;
+    private Set<Category> category;
 
     @Column(name = "title")
-    String filmTitle;
+    private String filmTitle;
 
     @Column(name = "description")
-    String filmDescription;
+    private String filmDescription;
 
     @Column(name = "release_year")
-    int filmReleaseYear;
+    private int filmReleaseYear;
 
     @ManyToOne
     @JoinColumn(name="language_id", nullable=false, insertable = false, updatable = false)
@@ -47,22 +47,22 @@ public class Film {
     @Column(name="language_id", nullable=false)
     private Integer language_id;
     @Column(name = "rental_duration")
-    int filmRentalDuration;
+    private int filmRentalDuration;
 
     @Column(name = "rental_rate")
-    float filmRentalRate;
+    private float filmRentalRate;
 
     @Column(name = "length")
-    int filmLength;
+    private int filmLength;
 
     @Column(name = "replacement_cost")
-    float filmReplacementCost;
+    private float filmReplacementCost;
 
     @Column(name = "rating")
-    String filmRating;
+    private String filmRating;
 
     @Column(name = "special_features")
-    String filmSpecialFeatures;
+    private String filmSpecialFeatures;
 
     @Column(name = "win")
     int win;

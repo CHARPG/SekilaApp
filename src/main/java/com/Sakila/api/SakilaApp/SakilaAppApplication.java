@@ -32,12 +32,14 @@ public class SakilaAppApplication {
 		SpringApplication.run(SakilaAppApplication.class, args);
 			}
 
+	//get all info for a specific film by id
 	@GetMapping("/getFilm/{id}")
 	@ResponseBody
 	public Optional<Film> getFilm(@PathVariable Integer id){
 		return filmRepository.findById(id);
 	}
 
+	//add 1 to a specific films win variable by 1
 	@PutMapping("/editWins/{id}")
 	@ResponseBody
 	public String addWin(@PathVariable Integer id){
@@ -47,6 +49,7 @@ public class SakilaAppApplication {
 		return ("Film " + id + " updated");
 	}
 
+	//add 1 to a specific films loss variable by 1
 	@PutMapping("/editLosses/{id}")
 	@ResponseBody
 	public String addLoss(@PathVariable Integer id){
@@ -55,5 +58,4 @@ public class SakilaAppApplication {
 		filmRepository.save(film);
 		return ("Film " + id + " updated");
 	}
-
 }

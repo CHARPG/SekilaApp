@@ -9,10 +9,7 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.mockito.Mock;
 
-import java.util.Optional;
-
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class EditWinsStepDefs {
     private SakilaAppApplication sakilaAppApplication;

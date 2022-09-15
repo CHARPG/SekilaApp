@@ -151,14 +151,4 @@ public class MockTest {
         testFilm.setLanguage_id(1);
         Assertions.assertEquals(1, testFilm.getLanguage_id(), "this is not it");
     }
-//    @Test
-//    void test_Film_Category()
-//    {
-//        Film testFilm = new Film();
-//        Category testCategory = new Category();
-//        testFilm.setFilmID(1);
-//        testCategory.setCategoryID(1);
-//        testCategory.setCategoryName("testCategory");
-//        Assertions.assertEquals("testCategory", testFilm.getCategory(), "this is not it");
-//    }
 }
