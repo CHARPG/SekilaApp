@@ -149,8 +149,8 @@ class MockTest {
     void test_Film_LanguageID()
     {
         Film testFilm = new Film();
-        testFilm.setLanguage_id(1);
-        Assertions.assertEquals(1, testFilm.getLanguage_id(), "this is not it");
+        testFilm.setLanguageID(1);
+        Assertions.assertEquals(1, testFilm.getLanguageID(), "this is not it");
     }
     @Test
     void test_Film_Category()

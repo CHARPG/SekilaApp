@@ -13,20 +13,11 @@ import java.util.Optional;
 @RequestMapping("/Home")
 @CrossOrigin
 public class SakilaAppApplication {
-	private static SakilaAppApplication instance;
 	@Autowired
 	private FilmRepository filmRepository;
 
 	public SakilaAppApplication(FilmRepository filmRepository){
 		this.filmRepository = filmRepository;
-
-		if(instance == null){
-			instance = this;
-		}
-	}
-
-	public static SakilaAppApplication getInstance(){
-		return instance;
 	}
 
 	public static void main(String[] args) {

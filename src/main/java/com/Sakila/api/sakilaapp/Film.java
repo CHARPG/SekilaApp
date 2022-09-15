@@ -166,10 +166,10 @@ public class Film {
     public Language getLanguage() {
         return language;
     }
-    public void setLanguage_id(Integer languageId) {
+    public void setLanguageID(Integer languageId) {
         this.languageId = languageId;
     }
-    public Integer getLanguage_id() {
+    public Integer getLanguageID() {
         return languageId;
     }
 

@@ -18,9 +18,9 @@ public class Actor {
     String lastName;
 
     //Constructors
-    public Actor(String first_name, String last_name){
-        this.firstName = first_name;
-        this.lastName = last_name;
+    public Actor(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
     public Actor()
     {
