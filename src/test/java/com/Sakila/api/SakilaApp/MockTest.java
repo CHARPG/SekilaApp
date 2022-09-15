@@ -8,6 +8,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
+import java.util.Set;
 
 import static org.mockito.Mockito.*;
 
@@ -150,5 +151,29 @@ public class MockTest {
         Film testFilm = new Film();
         testFilm.setLanguage_id(1);
         Assertions.assertEquals(1, testFilm.getLanguage_id(), "this is not it");
+    }
+    @Test
+    void test_Film_Category()
+    {
+        Category category = new Category();
+        Film testFilm = new Film();
+        Set expected = testFilm.getCategory();
+        Assertions.assertEquals(expected, testFilm.getCategory(), "this is not it");
+    }
+    @Test
+    void test_Film_Actor()
+    {
+        Actor actor = new Actor();
+        Film testFilm = new Film();
+        Set expected = testFilm.getActors();
+        Assertions.assertEquals(expected, testFilm.getActors(), "this is not it");
+    }
+    @Test
+    void test_Film_Langauge()
+    {
+        Language language = new Language();
+        Film testFilm = new Film();
+        Language expected = testFilm.getLanguage();
+        Assertions.assertEquals(expected, testFilm.getLanguage(), "this is not it");
     }
 }
